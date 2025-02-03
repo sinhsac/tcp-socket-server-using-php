@@ -1,9 +1,9 @@
 <?php
-define('DS_CONNECT', 'dsconnect');
-define('DEVICE_CONNECT', 'connect');
-define('DEVICE_NAME', 'name');
-define('LOGIN_AT', 'created_at');
-define('AUTH_STR', 'b4ac7203c0kda356');
-define('HTTP_PORT', '6869');
-define('SOCKET_PORT', '21196');
-?>
+const DS_CONNECT = 'dsconnect';
+const DEVICE_CONNECT = 'connect';
+const DEVICE_NAME = 'name';
+const LOGIN_AT = 'created_at';
+const AUTH_STR = 'b4ac7203c0kda356';
+const HTTP_PORT = '6869';
+const SOCKET_PORT = '21196';
+
