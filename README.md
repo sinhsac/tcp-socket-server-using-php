@@ -1,10 +1,12 @@
 # TCP/IP Socket Server Using PHP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![PHP](https://img.shields.io/badge/PHP-7.x%20%7C%208.x-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![ReactPHP](https://img.shields.io/badge/ReactPHP-Event--Driven-4F5B93)](https://reactphp.org/)
 
 An asynchronous, event-driven TCP/IP socket server and HTTP gateway built with PHP and ReactPHP. It manages persistent TCP client connections for IoT or networked devices, supports token-authenticated `LOGIN`, `DATA` forwarding, and `PING` health checks, and exposes a lightweight HTTP dashboard and query interface to inspect connected devices and push messages in real time.
+
+> **Note:** Dependencies and ReactPHP APIs have been upgraded for PHP 8.1+ and ReactPHP 1.x. The original legacy version is archived under release [`v0.1.0-legacy`](https://github.com/sinhsac/tcp-socket-server-using-php/releases/tag/v0.1.0-legacy).
 
 ## Key Features
 
@@ -16,8 +18,8 @@ An asynchronous, event-driven TCP/IP socket server and HTTP gateway built with P
 
 ## Tech Stack
 
-- **Language**: PHP (CLI) with `ext-json`
-- **Networking & Concurrency**: [ReactPHP Socket](https://github.com/reactphp/socket) (`react/socket ^1.3.0`) & [ReactPHP HTTP](https://github.com/reactphp/http) (`react/http ^1.11.0`)
+- **Language**: PHP 8.1+ (CLI) with `ext-json`
+- **Networking & Concurrency**: [ReactPHP Socket](https://github.com/reactphp/socket) (`react/socket ^1.16`) & [ReactPHP HTTP](https://github.com/reactphp/http) (`react/http ^1.11`)
 - **Dependency Management**: Composer
 
 ## Project Structure
@@ -43,8 +45,8 @@ An asynchronous, event-driven TCP/IP socket server and HTTP gateway built with P
 
 ## Prerequisites
 
-- PHP CLI (with `json` extension enabled)
-- [Composer](https://getcomposer.org/)
+- PHP 8.1+ CLI (with `json` extension enabled)
+- [Composer](https://getcomposer.org/) 2.x
 
 ## Getting Started
 

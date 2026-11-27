@@ -4,7 +4,7 @@
 class SocketHandler {
 
     public static function doLogin($deviceId, \React\Socket\ConnectionInterface $connection, $params) {
-        $deviceName = preg_replace('/[^A-Za-z0-9. -]/', '', $params[0]);
+        $deviceName = preg_replace('/[^A-Za-z0-9. -]/', '', (string) ($params[0] ?? ''));
         $GLOBALS[DS_CONNECT][$deviceId] = [
             DEVICE_CONNECT => $connection,
             DEVICE_NAME => $deviceName,

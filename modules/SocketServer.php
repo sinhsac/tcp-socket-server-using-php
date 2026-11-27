@@ -1,12 +1,12 @@
 <?php
 if (!isset($loop)) {
-    $loop = React\EventLoop\Factory::create();
+    $loop = React\EventLoop\Loop::get();
 }
 if (!isset($socketURI)) {
     $socketURI = '0.0.0.0:' . SOCKET_PORT;
 }
 
-$socket = new React\Socket\Server($socketURI, $loop);
+$socket = new React\Socket\SocketServer($socketURI, [], $loop);
 
 $socket->on('connection', function (React\Socket\ConnectionInterface $connection) {
     echo "\nReceive client connect from : " . $connection->getRemoteAddress();
@@ -44,7 +44,7 @@ $socket->on('connection', function (React\Socket\ConnectionInterface $connection
                 SocketHandler::doLogin($deviceId, $connection, $params);
                 break;
             case "DATA":
-                $destDeviceId = trim($obj[3]);
+                $destDeviceId = trim($obj[3] ?? '');
                 if (empty($destDeviceId)) {
                     echo "\n dest device ID not valid";
                     break;
@@ -54,20 +54,21 @@ $socket->on('connection', function (React\Socket\ConnectionInterface $connection
                 SocketHandler::sendingData($destDeviceId, $connection, $params);
                 break;
             case "PING":
-                $destDeviceId = trim($obj[3]);
+                $destDeviceId = trim($obj[3] ?? '');
                 echo "\ndevice $deviceId in pinging $destDeviceId";
                 if (SocketHandler::isDeviceExists($destDeviceId, $connection)) {
                     $connection->write("OK\n");
                     echo "\ndevice $destDeviceId alive";
+                } else {
+                    echo "\ndevice $destDeviceId died";
                 }
-                echo "\ndevice $destDeviceId died";
                 break;
         }
 
     });
 
     $connection->on('error', function (Exception $e) {
-        echo '\nerror: ' . $e->getMessage();
+        echo "\nerror: " . $e->getMessage();
     });
 
     $connection->on('close', function () {
@@ -75,6 +76,4 @@ $socket->on('connection', function (React\Socket\ConnectionInterface $connection
     });
 });
 
-echo "\nsocket server at http://$socketURI";
-
-?>
+echo "\nsocket server at tcp://$socketURI";

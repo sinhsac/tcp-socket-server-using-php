@@ -1,7 +1,7 @@
 <?php
 class Page {
 	function resJson($obj) {
-		return new React\Http\Response(
+		return new React\Http\Message\Response(
 			200,
 			array(
 				'Content-Type' => 'application/json'

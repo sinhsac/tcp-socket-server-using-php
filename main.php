@@ -10,7 +10,7 @@ include './helper/DataUtils.php';
 include './helper/CollectionUtils.php';
 include './handler/SocketHandler.php';
 
-$loop = React\EventLoop\Factory::create();
+$loop = React\EventLoop\Loop::get();
 
 echo "Server da start\n";
 $GLOBALS[DS_CONNECT] = [];
